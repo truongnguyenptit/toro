@@ -14,5 +14,4 @@
  * limitations under the License.
  */
 
-include ':app', ':toro-core', ':app-youtube', ':toro-exoplayer', ':toro-mopub', ':demo-exoplayer', ':demo-mopub',
-    ':demo-ads'
+include ':app', ':toro-core', ':toro-exoplayer'

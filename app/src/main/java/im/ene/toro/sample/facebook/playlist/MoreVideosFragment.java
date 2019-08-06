@@ -19,17 +19,16 @@ package im.ene.toro.sample.facebook.playlist;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSmoothScroller;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.State;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSmoothScroller;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -145,7 +144,7 @@ public class MoreVideosFragment extends BlackBoardDialogFragment
     }
 
     layoutManager = new LinearLayoutManager(getContext()) {
-      @Override public void smoothScrollToPosition(RecyclerView view, State state, int position) {
+      @Override public void smoothScrollToPosition(RecyclerView view, RecyclerView.State state, int position) {
         LinearSmoothScroller linearSmoothScroller =
             new SnapTopLinearSmoothScroller(view.getContext());
         linearSmoothScroller.setTargetPosition(position);

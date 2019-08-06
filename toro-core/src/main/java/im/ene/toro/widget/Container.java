@@ -24,17 +24,6 @@ import android.os.Message;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.PowerManager;
-import android.support.annotation.CallSuper;
-import android.support.annotation.ColorInt;
-import android.support.annotation.FloatRange;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.view.AbsSavedState;
-import android.support.v4.view.WindowInsetsCompat;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.SparseArray;
@@ -42,6 +31,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import androidx.annotation.CallSuper;
+import androidx.annotation.ColorInt;
+import androidx.annotation.FloatRange;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.customview.view.AbsSavedState;
+import androidx.recyclerview.widget.RecyclerView;
+import com.airbnb.epoxy.EpoxyRecyclerView;
 import im.ene.toro.CacheManager;
 import im.ene.toro.PlayerDispatcher;
 import im.ene.toro.PlayerSelector;
@@ -83,7 +82,7 @@ import static im.ene.toro.widget.Common.max;
  */
 
 @SuppressWarnings({ "unused", "ConstantConditions" }) //
-public class Container extends RecyclerView {
+public class Container extends EpoxyRecyclerView {
 
   private static final String TAG = "ToroLib:Container";
 
@@ -118,7 +117,11 @@ public class Container extends RecyclerView {
     super.setRecyclerListener(recyclerListener);
   }
 
-  @CallSuper @Override protected void onAttachedToWindow() {
+  @Override public void setLayoutManager(@Nullable LayoutManager layout) {
+    super.setLayoutManager(layout);
+  }
+
+  @CallSuper @Override public void onAttachedToWindow() {
     super.onAttachedToWindow();
     if (getAdapter() != null) dataObserver.registerAdapter(getAdapter());
     if (animatorFinishHandler == null) {
@@ -151,7 +154,7 @@ public class Container extends RecyclerView {
     }
   }
 
-  @CallSuper @Override protected void onDetachedFromWindow() {
+  @CallSuper @Override public void onDetachedFromWindow() {
     super.onDetachedFromWindow();
     ViewGroup.LayoutParams params = getLayoutParams();
     if (params instanceof CoordinatorLayout.LayoutParams) {
@@ -798,7 +801,7 @@ public class Container extends RecyclerView {
     }
   }
 
-  private static class RecyclerListenerImpl implements RecyclerView.RecyclerListener {
+  private static class RecyclerListenerImpl implements EpoxyRecyclerView.RecyclerListener {
 
     final Container container;
     RecyclerListener delegate;

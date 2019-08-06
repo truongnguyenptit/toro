@@ -57,11 +57,11 @@ dependencies {
   }
 
   //noinspection GradleDependency
-  doc "com.google.android.exoplayer:exoplayer-core:r2.4.4:sources"
-  doc "com.google.android.exoplayer:exoplayer-ui:r2.4.4:sources"
-  doc "com.google.android.exoplayer:exoplayer-dash:r2.4.4:sources"
-  doc "com.google.android.exoplayer:exoplayer-hls:r2.4.4:sources"
-  doc "com.google.android.exoplayer:exoplayer-smoothstreaming:r2.4.4:sources"
+//  doc "com.google.android.exoplayer:exoplayer-core:r2.4.4:sources"
+//  doc "com.google.android.exoplayer:exoplayer-ui:r2.4.4:sources"
+//  doc "com.google.android.exoplayer:exoplayer-dash:r2.4.4:sources"
+//  doc "com.google.android.exoplayer:exoplayer-hls:r2.4.4:sources"
+//  doc "com.google.android.exoplayer:exoplayer-smoothstreaming:r2.4.4:sources"
 
   testImplementation 'junit:junit:4.12'
   androidTestImplementation 'com.android.support.test:runner:1.0.2'
@@ -75,4 +75,4 @@ ext {
 
 project.archivesBaseName = "toro-ext-mopub"
 
-apply from: '../gradle/script/publish.gradle'
+//apply from: '../gradle/script/publish.gradle'

@@ -17,7 +17,7 @@
 package im.ene.toro.sample.basic;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import im.ene.toro.PlayerSelector;
