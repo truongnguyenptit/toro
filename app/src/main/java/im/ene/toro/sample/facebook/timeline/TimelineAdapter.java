@@ -49,7 +49,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineViewHolder>
   TimelineAdapter(long initTimeStamp) {
     super();
     this.initTimeStamp = initTimeStamp;
-    setHasStableIds(true);
+    //setHasStableIds(true);
   }
 
   public void setCallback(@Nullable Callback callback) {
@@ -63,12 +63,8 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineViewHolder>
   @NonNull @Override
   public TimelineViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     final TimelineViewHolder viewHolder = TimelineViewHolder.createViewHolder(parent, viewType);
-    viewHolder.setClickListener(v -> {
-      int pos = viewHolder.getAdapterPosition();
-      if (callback != null && pos != RecyclerView.NO_POSITION) {
-        callback.onItemClick(viewHolder, v, getItem(pos), pos);
-      }
-    });
+
+
     return viewHolder;
   }
 

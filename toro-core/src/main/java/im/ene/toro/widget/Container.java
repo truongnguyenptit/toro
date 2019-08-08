@@ -40,6 +40,8 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.customview.view.AbsSavedState;
 import androidx.recyclerview.widget.RecyclerView;
+import com.airbnb.epoxy.EpoxyController;
+import com.airbnb.epoxy.EpoxyModel;
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import im.ene.toro.CacheManager;
 import im.ene.toro.PlayerDispatcher;

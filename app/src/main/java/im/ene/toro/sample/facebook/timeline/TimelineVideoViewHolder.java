@@ -17,6 +17,7 @@
 package im.ene.toro.sample.facebook.timeline;
 
 import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +48,8 @@ import static java.lang.String.format;
 @SuppressWarnings("WeakerAccess") //
 public class TimelineVideoViewHolder extends TimelineViewHolder implements ToroPlayer {
 
+  public static final String TAG = TimelineVideoViewHolder.class.getSimpleName();
+
   @BindView(R.id.fb_video_player) PlayerView playerView;
   @BindView(R.id.player_state) TextView state;
   private final Playable.EventListener listener = new Playable.DefaultEventListener() {
@@ -62,12 +65,14 @@ public class TimelineVideoViewHolder extends TimelineViewHolder implements ToroP
     super(itemView);
     itemText.setVisibility(View.GONE);
     playerView.setVisibility(View.VISIBLE);
+    Log.d(TAG, "TimelineVideoViewHolder");
   }
 
   @Override public void setClickListener(View.OnClickListener clickListener) {
     super.setClickListener(clickListener);
     playerView.setOnClickListener(clickListener);
     userIcon.setOnClickListener(clickListener);
+    Log.d(TAG, "setClickListener");
   }
 
   @Override void bind(TimelineAdapter adapter, FbItem item, List<Object> payloads) {
@@ -76,14 +81,18 @@ public class TimelineVideoViewHolder extends TimelineViewHolder implements ToroP
       MediaUrl url = ((FbVideo) item).getMediaUrl();
       mediaUri = url.getUri();
       userProfile.setText(format("%s・%s", getRelativeTimeSpanString(item.timeStamp), url.name()));
+      Log.d(TAG, "bind");
     }
   }
 
   @NonNull @Override public View getPlayerView() {
+
+    Log.d(TAG, "getPlayerView");
     return this.playerView;
   }
 
   @NonNull @Override public PlaybackInfo getCurrentPlaybackInfo() {
+    Log.d(TAG, "getCurrentPlaybackInfo");
     return helper != null ? helper.getLatestPlaybackInfo() : new PlaybackInfo();
   }
 
@@ -95,21 +104,26 @@ public class TimelineVideoViewHolder extends TimelineViewHolder implements ToroP
       helper.addEventListener(listener);
     }
     helper.initialize(container, playbackInfo);
+    Log.d(TAG, "initialize");
   }
 
   @Override public void play() {
+    Log.d(TAG, "play");
     if (helper != null) helper.play();
   }
 
   @Override public void pause() {
+    Log.d(TAG, "pause");
     if (helper != null) helper.pause();
   }
 
   @Override public boolean isPlaying() {
+    Log.d(TAG, "isPlaying");
     return helper != null && helper.isPlaying();
   }
 
   @Override public void release() {
+    Log.d(TAG, "release");
     if (helper != null) {
       helper.removeEventListener(listener);
       helper.release();
@@ -118,10 +132,12 @@ public class TimelineVideoViewHolder extends TimelineViewHolder implements ToroP
   }
 
   @Override public boolean wantsToPlay() {
+    Log.d(TAG, "wantsToPlay");
     return ToroUtil.visibleAreaOffset(this, itemView.getParent()) >= 0.85;
   }
 
   @Override public int getPlayerOrder() {
-    return getAdapterPosition();
+    Log.d(TAG, "getPlayerOrder" + getAdapterPosition());
+    return  -1;
   }
 }

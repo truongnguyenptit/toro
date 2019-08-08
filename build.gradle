@@ -28,7 +28,7 @@ buildscript {
 
   dependencies {
     //noinspection GradleDependency
-    classpath 'com.android.tools.build:gradle:3.3.0'
+    classpath 'com.android.tools.build:gradle:3.4.1'
     classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.4'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
@@ -97,11 +97,11 @@ task clean(type: Delete) {
   delete rootProject.buildDir
 }
 
-task wrapper(type: Wrapper) {
-  gradleVersion = '4.10.3'
-  //noinspection GroovyAccessibility
-  distributionType = 'ALL'
-}
+//task wrapper(type: Wrapper) {
+//  gradleVersion = '4.10.3'
+//  //noinspection GroovyAccessibility
+//  distributionType = 'ALL'
+//}
 
 // copy from https://github.com/chrisbanes/tivi
 // read from gradle.properties for a value, or use default instead.
